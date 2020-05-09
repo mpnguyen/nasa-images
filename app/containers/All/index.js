@@ -5,7 +5,7 @@
  */
 
 import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
@@ -17,13 +17,15 @@ import SearchBar from 'components/SearchBar/Loadable';
 import makeSelectAll from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import { searchImagesRequest } from './actions';
 
-export function All() {
+export function All({ searchImages }) {
   useInjectReducer({ key: 'all', reducer });
   useInjectSaga({ key: 'all', saga });
   const [searchTxt, setSearchTxt] = useState('');
   const onSearch = event => {
     event.preventDefault();
+    searchImages(searchTxt);
   };
 
   return (
@@ -41,7 +43,7 @@ export function All() {
 }
 
 All.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
+  searchImages: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -50,7 +52,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    searchImages: text => dispatch(searchImagesRequest(text)),
   };
 }
 

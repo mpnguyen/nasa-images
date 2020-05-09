@@ -4,15 +4,28 @@
  *
  */
 import produce from 'immer';
-import { DEFAULT_ACTION } from './constants';
+import {
+  SEARCH_IMAGES_REQUEST,
+  SEARCH_IMAGES_SUCCESS,
+  SEARCH_IMAGES_FAILURE,
+} from './constants';
 
 export const initialState = {};
 
 /* eslint-disable default-case, no-param-reassign */
 const allReducer = (state = initialState, action) =>
-  produce(state, (/* draft */) => {
+  produce(state, draft => {
     switch (action.type) {
-      case DEFAULT_ACTION:
+      case SEARCH_IMAGES_REQUEST:
+        draft.isSearching = true;
+        break;
+      case SEARCH_IMAGES_SUCCESS:
+        draft.isSearching = false;
+        draft.data = action.data;
+        break;
+      case SEARCH_IMAGES_FAILURE:
+        draft.isSearching = false;
+        draft.error = action.error;
         break;
     }
   });
