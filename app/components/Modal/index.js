@@ -7,7 +7,6 @@
 import React from 'react';
 import ReactModal from 'react-modal';
 import PropTypes from 'prop-types';
-// import styled from 'styled-components';
 
 function Modal({ isVisible, onRequestClose, children }) {
   return (
@@ -35,7 +34,7 @@ function Modal({ isVisible, onRequestClose, children }) {
 Modal.propTypes = {
   isVisible: PropTypes.bool,
   onRequestClose: PropTypes.func,
-  children: PropTypes.array,
+  children: PropTypes.object,
 };
 
 export default Modal;

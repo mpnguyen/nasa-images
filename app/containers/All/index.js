@@ -30,8 +30,8 @@ export function All({ searchImages, all }) {
   const [isSearchModalVisible, setIsSearchModalVisible] = useState(false);
   const onSearch = event => {
     event.preventDefault();
-    searchImages(searchTxt);
     setIsSearchModalVisible(false);
+    searchImages(searchTxt);
   };
 
   return (
