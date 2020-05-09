@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect';
-import { initialState } from './reducer';
+import { initialState } from '../All/reducer';
 
 /**
  * Direct selector to the removed state domain
  */
 
-const selectRemovedDomain = state => state.removed || initialState;
+const selectRemovedDomain = state => state.all || initialState;
 
 /**
  * Other specific selectors
@@ -15,11 +15,11 @@ const selectRemovedDomain = state => state.removed || initialState;
  * Default selector used by Removed
  */
 
-const makeSelectRemoved = () =>
+const makeSelectRemovedData = () =>
   createSelector(
     selectRemovedDomain,
-    substate => substate,
+    substate => substate.data.filter(item => item.isRemoved),
   );
 
-export default makeSelectRemoved;
+export default makeSelectRemovedData;
 export { selectRemovedDomain };

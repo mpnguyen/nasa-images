@@ -5,4 +5,18 @@
   flex: 1;
   display: flex;
   justify-content: center;
+
+  &.empty {
+    min-height: 40vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: #ccc;
+    border-radius: 10px;
+
+    span {
+      font-size: 40px;
+      margin-left: 10px;
+    }
+  }
 }

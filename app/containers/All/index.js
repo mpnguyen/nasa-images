@@ -14,17 +14,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
 import SearchBar from 'components/SearchBar/Loadable';
 import DataList from 'components/DataList/Loadable';
 import Modal from 'components/Modal';
-import makeSelectAll from './selectors';
-import reducer from './reducer';
+import { makeSelectData } from './selectors';
 import saga from './saga';
-import { searchImagesRequest } from './actions';
+import {
+  searchImagesRequest,
+  likeItemRequest,
+  removeItemRequest,
+} from './actions';
 
-export function All({ searchImages, all }) {
-  useInjectReducer({ key: 'all', reducer });
+export function All({ searchImages, data, likeItem, removeItem }) {
   useInjectSaga({ key: 'all', saga });
   const [searchTxt, setSearchTxt] = useState('');
   const [isSearchModalVisible, setIsSearchModalVisible] = useState(false);
@@ -40,6 +41,8 @@ export function All({ searchImages, all }) {
         <title>All</title>
       </Helmet>
 
+      <h1>All items</h1>
+
       <button
         className="get-data-btn"
         type="button"
@@ -48,7 +51,8 @@ export function All({ searchImages, all }) {
         <FontAwesomeIcon icon={faPlus} />
         Get data
       </button>
-      <DataList data={all.data} />
+
+      <DataList data={data} likeItem={likeItem} removeItem={removeItem} />
 
       <Modal
         isVisible={isSearchModalVisible}
@@ -66,16 +70,20 @@ export function All({ searchImages, all }) {
 
 All.propTypes = {
   searchImages: PropTypes.func.isRequired,
-  all: PropTypes.object,
+  data: PropTypes.array,
+  likeItem: PropTypes.func,
+  removeItem: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
-  all: makeSelectAll(),
+  data: makeSelectData(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     searchImages: text => dispatch(searchImagesRequest(text)),
+    likeItem: href => dispatch(likeItemRequest(href)),
+    removeItem: text => dispatch(removeItemRequest(text)),
   };
 }
 

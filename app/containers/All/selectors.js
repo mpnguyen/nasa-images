@@ -10,6 +10,11 @@ const selectAllDomain = state => state.all || initialState;
 /**
  * Other specific selectors
  */
+const makeSelectData = () =>
+  createSelector(
+    selectAllDomain,
+    substate => substate.data.filter(item => !item.isRemoved),
+  );
 
 /**
  * Default selector used by All
@@ -22,4 +27,4 @@ const makeSelectAll = () =>
   );
 
 export default makeSelectAll;
-export { selectAllDomain };
+export { selectAllDomain, makeSelectData };

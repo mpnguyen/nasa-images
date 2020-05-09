@@ -5,43 +5,42 @@
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
-import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
-import makeSelectRemoved from './selectors';
-import reducer from './reducer';
-import saga from './saga';
+import DataList from 'components/DataList/Loadable';
+import makeSelectRemovedData from './selectors';
+import { likeItemRequest, removeItemRequest } from '../All/actions';
 
-export function Removed() {
-  useInjectReducer({ key: 'removed', reducer });
-  useInjectSaga({ key: 'removed', saga });
-
+export function Removed({ data, likeItem, removeItem }) {
   return (
     <div>
       <Helmet>
         <title>Removed</title>
       </Helmet>
-      <h1>Removed</h1>
+      <h1>Removed items</h1>
+      <DataList data={data} likeItem={likeItem} removeItem={removeItem} />
     </div>
   );
 }
 
 Removed.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
+  data: PropTypes.array,
+  likeItem: PropTypes.func,
+  removeItem: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
-  removed: makeSelectRemoved(),
+  data: makeSelectRemovedData(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    likeItem: href => dispatch(likeItemRequest(href)),
+    removeItem: text => dispatch(removeItemRequest(text)),
   };
 }
 

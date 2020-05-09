@@ -3,6 +3,7 @@
   max-width: 400px;
   padding: 20px;
   border: 1px solid #ccc;
+  border-radius: 4px;
   margin-bottom: 40px;
   
   img {
@@ -16,7 +17,25 @@
       background-color: transparent;
       border: none;
       outline: none;
+
+      &.active {
+        color: #F44336;
+      }
+
+      &.undo-btn {
+        border: 1px #ccc solid;
+        padding: 10px;
+        border-radius: 10px;
+
+        svg {
+          margin-right: 10px;
+        }
+
+
+        &:active {
+          background-color: #ccc;
+        }
+      }
     }
   }
-
 }

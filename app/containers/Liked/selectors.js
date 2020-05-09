@@ -1,25 +1,21 @@
 import { createSelector } from 'reselect';
-import { initialState } from './reducer';
+import { initialState } from '../All/reducer';
 
 /**
  * Direct selector to the liked state domain
  */
 
-const selectLikedDomain = state => state.liked || initialState;
+const selectLikedDomain = state => state.all || initialState;
 
 /**
  * Other specific selectors
  */
 
-/**
- * Default selector used by Liked
- */
-
-const makeSelectLiked = () =>
+const makeSelectLikedData = () =>
   createSelector(
     selectLikedDomain,
-    substate => substate,
+    substate => substate.data.filter(item => item.isLiked && !item.isRemoved),
   );
 
-export default makeSelectLiked;
+export default makeSelectLikedData;
 export { selectLikedDomain };

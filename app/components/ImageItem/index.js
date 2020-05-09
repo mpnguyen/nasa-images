@@ -6,13 +6,53 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { get } from 'lodash';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHeart,
+  faTrash,
+  faEdit,
+  faUndo,
+} from '@fortawesome/free-solid-svg-icons';
 
 import './image-item.scss';
 
-function ImageItem({ item }) {
+function ImageItem({ item, likeItem, removeItem }) {
+  const renderActions = () => {
+    if (item.isRemoved)
+      return (
+        <div className="actions">
+          <button
+            type="button"
+            className="undo-btn"
+            onClick={() => removeItem(item.href)}
+          >
+            <FontAwesomeIcon icon={faUndo} />
+            Undo
+          </button>
+        </div>
+      );
+
+    return (
+      <div className="actions">
+        <button
+          className={classNames({ active: item.isLiked })}
+          type="button"
+          onClick={() => likeItem(item.href)}
+        >
+          <FontAwesomeIcon icon={faHeart} />
+        </button>
+        <button type="button" onClick={() => removeItem(item.href)}>
+          <FontAwesomeIcon icon={faTrash} />
+        </button>
+        <button type="button">
+          <FontAwesomeIcon icon={faEdit} />
+        </button>
+      </div>
+    );
+  };
+
   return (
     <div className="item-container">
       <img
@@ -20,24 +60,15 @@ function ImageItem({ item }) {
         alt={get(item, ['data', 0, 'title'])}
       />
       <h2>{get(item, ['data', 0, 'title'])}</h2>
-
-      <div className="actions">
-        <button type="button">
-          <FontAwesomeIcon icon={faHeart} />
-        </button>
-        <button type="button">
-          <FontAwesomeIcon icon={faTrash} />
-        </button>
-        <button type="button">
-          <FontAwesomeIcon icon={faEdit} />
-        </button>
-      </div>
+      {renderActions()}
     </div>
   );
 }
 
 ImageItem.propTypes = {
   item: PropTypes.object,
+  likeItem: PropTypes.func,
+  removeItem: PropTypes.func,
 };
 
 export default ImageItem;
