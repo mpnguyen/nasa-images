@@ -6,6 +6,10 @@ header {
     padding: 0 40px;
     justify-content: space-between;
 
+    .title {
+        font-size: 30px;
+    }
+
     .nav-items {
         flex-direction: row;
         display: flex;

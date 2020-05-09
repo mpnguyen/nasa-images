@@ -1,3 +1,36 @@
 main {
-    padding: 20px 40px
+    padding: 20px 40px;
+
+    .get-data-btn {
+        background-color: #2196F3;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        align-self: center;
+        outline: none;
+        border-radius: 10px;
+        margin-left: 20px;
+
+        &:active  {
+            background-color: #2196E0;
+        }
+
+        svg { 
+            margin-right: 5px;
+        }
+    }
+}
+
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.ReactModal__Overlay--after-open{
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+    opacity: 0;
 }
