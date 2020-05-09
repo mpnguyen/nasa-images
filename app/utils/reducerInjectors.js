@@ -1,5 +1,7 @@
 import invariant from 'invariant';
 import { isEmpty, isFunction, isString } from 'lodash';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 import checkStore from './checkStore';
 import createReducer from '../reducers';
@@ -21,7 +23,20 @@ export function injectReducerFactory(store, isValid) {
       return;
 
     store.injectedReducers[key] = reducer; // eslint-disable-line no-param-reassign
-    store.replaceReducer(createReducer(store.injectedReducers));
+
+    // config redux persist
+    const persistConfig = {
+      key: 'root',
+      whitelist: ['all'],
+      storage,
+    };
+
+    store.replaceReducer(
+      persistReducer(persistConfig, createReducer(store.injectedReducers)),
+    );
+
+    const persistor = persistStore(store);
+    persistor.persist();
   };
 }
 
