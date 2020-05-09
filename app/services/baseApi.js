@@ -19,4 +19,5 @@ request.interceptors.response.use(
   },
 );
 
-export const searchImages = text => request.get(`search?q=${text}`);
+export const searchImages = text =>
+  request.get(`search?q=${text}&page=1&media_type=image`);

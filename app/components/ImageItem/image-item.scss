@@ -1,0 +1,22 @@
+.item-container {
+  margin-right: 20px;
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-bottom: 40px;
+  
+  img {
+    width: 360px;
+    height: 360px;
+    object-fit: cover;
+  }
+
+  .actions {
+    button {
+      background-color: transparent;
+      border: none;
+      outline: none;
+    }
+  }
+
+}

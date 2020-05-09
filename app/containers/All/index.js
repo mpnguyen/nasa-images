@@ -14,12 +14,13 @@ import { compose } from 'redux';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import SearchBar from 'components/SearchBar/Loadable';
+import DataList from 'components/DataList/Loadable';
 import makeSelectAll from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { searchImagesRequest } from './actions';
 
-export function All({ searchImages }) {
+export function All({ searchImages, all }) {
   useInjectReducer({ key: 'all', reducer });
   useInjectSaga({ key: 'all', saga });
   const [searchTxt, setSearchTxt] = useState('');
@@ -38,12 +39,14 @@ export function All({ searchImages }) {
         onChange={event => setSearchTxt(event.target.value)}
         onSubmit={onSearch}
       />
+      <DataList data={all.data} />
     </div>
   );
 }
 
 All.propTypes = {
   searchImages: PropTypes.func.isRequired,
+  all: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({

@@ -10,7 +10,10 @@ import {
   SEARCH_IMAGES_FAILURE,
 } from './constants';
 
-export const initialState = {};
+export const initialState = {
+  isSearching: false,
+  data: [],
+};
 
 /* eslint-disable default-case, no-param-reassign */
 const allReducer = (state = initialState, action) =>
