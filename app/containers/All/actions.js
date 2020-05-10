@@ -10,6 +10,7 @@ import {
   SEARCH_IMAGES_FAILURE,
   LIKE_ITEM,
   REMOVE_ITEM,
+  UPDATE_ITEM,
 } from './constants';
 
 export function searchImagesRequest(text) {
@@ -44,5 +45,14 @@ export function removeItemRequest(href) {
   return {
     type: REMOVE_ITEM,
     href,
+  };
+}
+
+export function updateItemRequest(href, title, url) {
+  return {
+    type: UPDATE_ITEM,
+    href,
+    title,
+    url,
   };
 }

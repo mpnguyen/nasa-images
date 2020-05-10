@@ -11,6 +11,7 @@ import {
   SEARCH_IMAGES_FAILURE,
   LIKE_ITEM,
   REMOVE_ITEM,
+  UPDATE_ITEM,
 } from './constants';
 
 export const initialState = {
@@ -45,6 +46,13 @@ const allReducer = (state = initialState, action) =>
         index = findIndex(draft.data, item => item.href === action.href);
         if (index >= 0) {
           draft.data[index].isRemoved = !draft.data[index].isRemoved;
+        }
+        break;
+      case UPDATE_ITEM:
+        index = findIndex(draft.data, item => item.href === action.href);
+        if (index >= 0) {
+          draft.data[index].data[0].title = action.title;
+          draft.data[index].links[0].href = action.url;
         }
         break;
     }

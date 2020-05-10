@@ -18,7 +18,7 @@ import {
 
 import './image-item.scss';
 
-function ImageItem({ item, likeItem, removeItem }) {
+function ImageItem({ item, likeItem, removeItem, showItemForm }) {
   const renderActions = () => {
     if (item.isRemoved)
       return (
@@ -46,7 +46,7 @@ function ImageItem({ item, likeItem, removeItem }) {
         <button type="button" onClick={() => removeItem(item.href)}>
           <FontAwesomeIcon icon={faTrash} />
         </button>
-        <button type="button">
+        <button type="button" onClick={() => showItemForm(item)}>
           <FontAwesomeIcon icon={faEdit} />
         </button>
       </div>
@@ -69,6 +69,7 @@ ImageItem.propTypes = {
   item: PropTypes.object,
   likeItem: PropTypes.func,
   removeItem: PropTypes.func,
+  showItemForm: PropTypes.func,
 };
 
 export default ImageItem;

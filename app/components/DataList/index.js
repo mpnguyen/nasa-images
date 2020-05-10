@@ -12,7 +12,7 @@ import ImageItem from 'components/ImageItem/Loadable';
 
 import './data-list.scss';
 
-function DataList({ data, likeItem, removeItem }) {
+function DataList({ data, likeItem, removeItem, showItemForm }) {
   if (data.length === 0) {
     return (
       <div className="data-list-container empty">
@@ -30,6 +30,7 @@ function DataList({ data, likeItem, removeItem }) {
           item={item}
           likeItem={likeItem}
           removeItem={removeItem}
+          showItemForm={showItemForm}
         />
       ))}
     </div>
@@ -40,6 +41,7 @@ DataList.propTypes = {
   data: PropTypes.array,
   likeItem: PropTypes.func,
   removeItem: PropTypes.func,
+  showItemForm: PropTypes.func,
 };
 
 export default DataList;

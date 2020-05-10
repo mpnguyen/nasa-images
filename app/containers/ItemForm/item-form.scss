@@ -1,0 +1,32 @@
+.item-form-container {
+  input, textarea {
+    width: 100%;
+    outline: none;
+    border: none;
+    margin-top: 20px;
+    border-bottom: 1px #ccc solid;
+    padding: 10px 20px;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: flex-end;
+
+    .action-btn {
+      outline: none;
+      background-color: #2196F3;
+      color: #fff;
+      border: none;
+      padding: 5px 15px;
+      border-radius: 12px;
+
+      &.danger {
+        margin-left: 5px;
+        background-color: #F44336;
+      }
+    }
+  }
+}

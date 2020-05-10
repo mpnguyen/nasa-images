@@ -17,6 +17,7 @@ import { useInjectReducer } from 'utils/injectReducer';
 import All from 'containers/All/Loadable';
 import Liked from 'containers/Liked/Loadable';
 import Removed from 'containers/Removed/Loadable';
+import ItemForm from 'containers/ItemForm/Loadable';
 import Spinner from 'components/Spinner';
 import reducer from './reducer';
 
@@ -46,6 +47,7 @@ function HomePage(props) {
           </div>
         )}
       </main>
+      <ItemForm />
     </div>
   );
 }

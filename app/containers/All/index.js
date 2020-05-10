@@ -24,8 +24,15 @@ import {
   likeItemRequest,
   removeItemRequest,
 } from './actions';
+import { showItemFormRequest } from '../ItemForm/actions';
 
-export function All({ searchImages, data, likeItem, removeItem }) {
+export function All({
+  searchImages,
+  data,
+  likeItem,
+  removeItem,
+  showItemForm,
+}) {
   useInjectSaga({ key: 'all', saga });
   const [searchTxt, setSearchTxt] = useState('');
   const [isSearchModalVisible, setIsSearchModalVisible] = useState(false);
@@ -52,7 +59,12 @@ export function All({ searchImages, data, likeItem, removeItem }) {
         Get data
       </button>
 
-      <DataList data={data} likeItem={likeItem} removeItem={removeItem} />
+      <DataList
+        data={data}
+        likeItem={likeItem}
+        removeItem={removeItem}
+        showItemForm={showItemForm}
+      />
 
       <Modal
         isVisible={isSearchModalVisible}
@@ -73,6 +85,7 @@ All.propTypes = {
   data: PropTypes.array,
   likeItem: PropTypes.func,
   removeItem: PropTypes.func,
+  showItemForm: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -84,6 +97,7 @@ function mapDispatchToProps(dispatch) {
     searchImages: text => dispatch(searchImagesRequest(text)),
     likeItem: href => dispatch(likeItemRequest(href)),
     removeItem: text => dispatch(removeItemRequest(text)),
+    showItemForm: item => dispatch(showItemFormRequest(item)),
   };
 }
 
