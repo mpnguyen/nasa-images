@@ -5,6 +5,11 @@ header {
     border-bottom: 1px solid #ccc;
     padding: 0 40px;
     justify-content: space-between;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: #fff;
 
     .title {
         font-size: 30px;
