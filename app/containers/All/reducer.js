@@ -65,7 +65,7 @@ const allReducer = (state = initialState, action) =>
     }
   });
 
-const sortData = (data, sort) => {
+export const sortData = (data, sort) => {
   switch (sort) {
     case 'Newest':
       return sortBy(data, item => item.data[0].date_created).reverse();

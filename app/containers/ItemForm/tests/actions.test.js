@@ -1,13 +1,22 @@
-import { defaultAction } from '../actions';
-import { DEFAULT_ACTION } from '../constants';
+import { showItemFormRequest, hideItemFormRequest } from '../actions';
+import { SHOW_ITEM_FORM, HIDE_ITEM_FORM } from '../constants';
 
 describe('ItemForm actions', () => {
-  describe('Default Action', () => {
-    it('has a type of DEFAULT_ACTION', () => {
+  describe('showItemFormRequest', () => {
+    it('has a type of SHOW_ITEM_FORM', () => {
       const expected = {
-        type: DEFAULT_ACTION,
+        type: SHOW_ITEM_FORM,
       };
-      expect(defaultAction()).toEqual(expected);
+      expect(showItemFormRequest()).toEqual(expected);
+    });
+  });
+
+  describe('hideItemFormRequest', () => {
+    it('has a type of HIDE_ITEM_FORM', () => {
+      const expected = {
+        type: HIDE_ITEM_FORM,
+      };
+      expect(hideItemFormRequest()).toEqual(expected);
     });
   });
 });

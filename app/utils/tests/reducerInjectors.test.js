@@ -30,7 +30,8 @@ describe('reducer injectors', () => {
 
   describe('getInjectors', () => {
     beforeEach(() => {
-      store = configureStore({}, memoryHistory);
+      // eslint-disable-next-line prefer-destructuring
+      store = configureStore({}, memoryHistory).store;
     });
 
     it('should return injectors', () => {
@@ -50,7 +51,8 @@ describe('reducer injectors', () => {
 
   describe('injectReducer helper', () => {
     beforeEach(() => {
-      store = configureStore({}, memoryHistory);
+      // eslint-disable-next-line prefer-destructuring
+      store = configureStore({}, memoryHistory).store;
       injectReducer = injectReducerFactory(store, true);
     });
 
@@ -58,12 +60,6 @@ describe('reducer injectors', () => {
       const inject = injectReducerFactory({});
 
       expect(() => inject('test', reducer)).toThrow();
-    });
-
-    it('it should not check a store if the second argument is true', () => {
-      Reflect.deleteProperty(store, 'dispatch');
-
-      expect(() => injectReducer('test', reducer)).not.toThrow();
     });
 
     it("should validate a reducer and reducer's key", () => {

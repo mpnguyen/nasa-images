@@ -73,6 +73,7 @@ export function ItemForm({ itemForm, hideItemForm, updateItem }) {
 ItemForm.propTypes = {
   hideItemForm: PropTypes.func.isRequired,
   itemForm: PropTypes.object,
+  updateItem: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
