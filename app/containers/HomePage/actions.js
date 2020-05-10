@@ -6,16 +6,14 @@
 
 import { SHOW_SPINNER_REQUEST, HIDE_SPINNER_REQUEST } from './constants';
 
-export function showSpinnerRequest(text) {
+export function showSpinnerRequest() {
   return {
     type: SHOW_SPINNER_REQUEST,
-    text,
   };
 }
 
-export function hideSpinnerRequest(data) {
+export function hideSpinnerRequest() {
   return {
     type: HIDE_SPINNER_REQUEST,
-    data,
   };
 }

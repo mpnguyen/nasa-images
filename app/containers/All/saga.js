@@ -18,5 +18,6 @@ export function* searchImagesRequestSaga({ text }) {
     yield put(hideSpinnerRequest());
   } catch (error) {
     yield put(searchImagesFailure(error));
+    yield put(hideSpinnerRequest());
   }
 }
