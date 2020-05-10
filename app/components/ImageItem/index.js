@@ -60,9 +60,10 @@ function ImageItem({ item, likeItem, removeItem, showItemForm }) {
         alt={get(item, ['data', 0, 'title'])}
       />
       <h2>{get(item, ['data', 0, 'title'])}</h2>
-      <h4>
+      <h5>
         {new Date(get(item, ['data', 0, 'date_created'])).toLocaleString()}
-      </h4>
+      </h5>
+
       {renderActions()}
     </div>
   );
