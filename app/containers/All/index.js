@@ -17,6 +17,8 @@ import { useInjectSaga } from 'utils/injectSaga';
 import SearchBar from 'components/SearchBar/Loadable';
 import DataList from 'components/DataList/Loadable';
 import Modal from 'components/Modal';
+import SortDropDown from 'containers/SortDropDown';
+
 import { makeSelectData } from './selectors';
 import saga from './saga';
 import {
@@ -58,6 +60,8 @@ export function All({
         <FontAwesomeIcon icon={faPlus} />
         Get data
       </button>
+
+      <SortDropDown />
 
       <DataList
         data={data}

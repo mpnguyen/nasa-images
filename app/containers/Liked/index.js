@@ -12,6 +12,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import DataList from 'components/DataList/Loadable';
+import SortDropDown from 'containers/SortDropDown';
 import makeSelectLikedData from './selectors';
 import { likeItemRequest, removeItemRequest } from '../All/actions';
 import { showItemFormRequest } from '../ItemForm/actions';
@@ -23,6 +24,9 @@ export function Liked({ data, likeItem, removeItem, showItemForm }) {
         <title>Liked</title>
       </Helmet>
       <h1>Liked items</h1>
+
+      <SortDropDown />
+
       <DataList
         data={data}
         likeItem={likeItem}

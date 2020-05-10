@@ -11,6 +11,7 @@ import {
   LIKE_ITEM,
   REMOVE_ITEM,
   UPDATE_ITEM,
+  SORT_ITEMS,
 } from './constants';
 
 export function searchImagesRequest(text) {
@@ -54,5 +55,12 @@ export function updateItemRequest(href, title, url) {
     href,
     title,
     url,
+  };
+}
+
+export function sortItemsRequest(sortBy) {
+  return {
+    type: SORT_ITEMS,
+    sortBy,
   };
 }

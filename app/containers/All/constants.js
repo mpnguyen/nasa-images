@@ -13,3 +13,5 @@ export const LIKE_ITEM = 'app/All/LIKE_ITEM';
 export const REMOVE_ITEM = 'app/All/REMOVE_ITEM';
 
 export const UPDATE_ITEM = 'app/All/UPDATE_ITEM';
+
+export const SORT_ITEMS = 'app/All/SORT_ITEMS';

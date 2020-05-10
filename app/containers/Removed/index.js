@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
+import SortDropDown from 'containers/SortDropDown';
 import DataList from 'components/DataList/Loadable';
 import makeSelectRemovedData from './selectors';
 import { removeItemRequest } from '../All/actions';
@@ -22,6 +23,7 @@ export function Removed({ data, removeItem }) {
         <title>Removed</title>
       </Helmet>
       <h1>Removed items</h1>
+      <SortDropDown />
       <DataList data={data} removeItem={removeItem} />
     </div>
   );
